@@ -15,16 +15,6 @@ Orchestrates AI agents, robots, and humans to automate end-to-end invoice workfl
 | invoiceprocessing_ixp-...json | IXP taxonomy for document extraction |
 | Submission deck_FocusShieldAI.pdf | Project presentation deck |
 
-## Tech Stack
-- UiPath Maestro (BPMN orchestration)
-- UiPath IXP (Intelligent Document Processing)
-- UiPath Apps (UI layer)
-- Action Center (Human-in-the-loop)
-- UiPath DataFabric (Record management & PDF upload)
-- UiPath Studio / Orchestrator (Dispatcher, Performer, Queue)
-- LLM Extraction API / Internal AI validation
-- Email (IMAP/Exchange)
-
 ## Project Overview
 
 Focus-Shield-AI solves the problem of **manual, error-prone invoice processing** that burdens finance teams across organizations. Invoices arrive via email in various formats (PDF, scanned images, etc.), are manually keyed into systems, reviewed by humans, and tracked through spreadsheets — a process that is slow, inconsistent, and costly.
@@ -38,7 +28,7 @@ This solution automates the entire invoice lifecycle end-to-end:
 
 ---
 
-## UiPath Components /
+## UiPath Components
 
 | Component | Role |
 |---|---|
@@ -56,7 +46,7 @@ This solution automates the entire invoice lifecycle end-to-end:
 
 ---
 
-## Agent Type /
+## Agent Type
 
 This solution uses **Low-Code Agents**.
 
@@ -69,7 +59,7 @@ This solution uses **Low-Code Agents**.
 
 ---
 
-## Setup Instructions /
+## Setup Instructions
 
 ### Prerequisites
 - UiPath Orchestrator (cloud or on-prem) with active license
@@ -125,6 +115,3 @@ This solution uses **Low-Code Agents**.
 6. Check `Invoice Monitor` app for real-time status.
 7. For exception cases, confirm tasks appear in Action Center for human review.
 8. Verify final records are stored in DataFabric.
-
-
-  
