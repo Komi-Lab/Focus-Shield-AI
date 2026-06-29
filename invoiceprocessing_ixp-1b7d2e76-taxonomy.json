@@ -1,0 +1,412 @@
+{
+  "id": "74793a42cffb0524",
+  "owner": "invoiceprocessing_ixp-1b7d2e76-ixp",
+  "name": "invoiceprocessing_ixp-1b7d2e76",
+  "title": "InvoiceProcessing_IXP",
+  "description": "",
+  "created": "2026-06-16T00:03:19.672935Z",
+  "last_modified": "2026-06-28T05:53:54.810730Z",
+  "model_family": "transformer-english",
+  "source_ids": [
+    "4ddbbce712fa3c69",
+    "85fc7b654bd9d493"
+  ],
+  "has_sentiment": true,
+  "limited_access": false,
+  "entity_defs": [
+    {
+      "id": "64d8150ffa6b453f",
+      "name": "Boolean",
+      "title": "Boolean",
+      "inherits_from": [
+        "0000000000000046"
+      ],
+      "trainable": true,
+      "color": 0,
+      "_entity_def_flags": [],
+      "instructions": "Use to represent boolean values in text."
+    },
+    {
+      "id": "65a05c8b62752ffd",
+      "name": "Date",
+      "title": "Date",
+      "inherits_from": [
+        "0000000000000007"
+      ],
+      "trainable": true,
+      "color": 1,
+      "_entity_def_flags": [],
+      "instructions": "Use to represent dates in text."
+    },
+    {
+      "id": "abe3f078d1c16113",
+      "name": "Exact Text",
+      "title": "Exact Text",
+      "inherits_from": [],
+      "trainable": true,
+      "color": 2,
+      "_entity_def_flags": [
+        "appears_verbatim"
+      ],
+      "instructions": "Use to represent text that appears verbatim in text."
+    },
+    {
+      "id": "3b97fbce1b2a9bf7",
+      "name": "Inferred Text",
+      "title": "Inferred Text",
+      "inherits_from": [],
+      "trainable": true,
+      "color": 3,
+      "_entity_def_flags": [],
+      "instructions": "Use for text that might not appear verbatim in the text."
+    },
+    {
+      "id": "554c4644559b7606",
+      "name": "Monetary Quantity",
+      "title": "Monetary Quantity",
+      "inherits_from": [
+        "0000000000000006"
+      ],
+      "trainable": true,
+      "color": 4,
+      "_entity_def_flags": [],
+      "instructions": "Use to represent monetary values in text."
+    },
+    {
+      "id": "830c8beba97fcf7d",
+      "name": "Number",
+      "title": "Number",
+      "inherits_from": [
+        "0000000000000044"
+      ],
+      "trainable": true,
+      "color": 5,
+      "_entity_def_flags": [],
+      "instructions": "Use to represent amounts or quantities in text."
+    }
+  ],
+  "general_fields": [],
+  "label_groups": [
+    {
+      "name": "default",
+      "label_defs": [
+        {
+          "name": "Invoice",
+          "id": "395b8f5acc9b4fdc",
+          "instructions": "Extract general invoice information.",
+          "moon_form": [
+            {
+              "field_id": "5126245b85ce8bef",
+              "id": "abe3f078d1c16113",
+              "field_type_id": "abe3f078d1c16113",
+              "kind": "Exact Text",
+              "name": "InvoiceNumber",
+              "instructions": "Extract the invoice number.",
+              "rule_set": null
+            },
+            {
+              "field_id": "fbf68cccd5ff8e74",
+              "id": "65a05c8b62752ffd",
+              "field_type_id": "65a05c8b62752ffd",
+              "kind": "Date",
+              "name": "InvoiceDate",
+              "instructions": "Extract the date the invoice was issued.",
+              "rule_set": null
+            },
+            {
+              "field_id": "0808ef1f35d3e5b5",
+              "id": "65a05c8b62752ffd",
+              "field_type_id": "65a05c8b62752ffd",
+              "kind": "Date",
+              "name": "DueDate",
+              "instructions": "Extract the payment due date.",
+              "rule_set": null
+            },
+            {
+              "field_id": "49827e5a4c174ba1",
+              "id": "abe3f078d1c16113",
+              "field_type_id": "abe3f078d1c16113",
+              "kind": "Exact Text",
+              "name": "CustomerName",
+              "instructions": "Extract the name of the customer (請求先 in Japanese, Bill To in English, Rechnungsempfaenger in German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "a4b9b6f446d1dc1e",
+              "id": "abe3f078d1c16113",
+              "field_type_id": "abe3f078d1c16113",
+              "kind": "Exact Text",
+              "name": "VendorName",
+              "instructions": "Extract the name of the vendor (取引先 in Japanese, Vendor in English, Lieferant in German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "d823bfc04412d172",
+              "id": "abe3f078d1c16113",
+              "field_type_id": "abe3f078d1c16113",
+              "kind": "Exact Text",
+              "name": "RegistrationNumber",
+              "instructions": "Extract the registration number (登録番号 in Japanese, Vendor EIN in English, USt-IdNr. in German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "a0a926ed52b9f28f",
+              "id": "554c4644559b7606",
+              "field_type_id": "554c4644559b7606",
+              "kind": "Monetary Quantity",
+              "name": "SubtotalExclTax",
+              "instructions": "Extract the subtotal amount excluding tax (小計(税抜) in Japanese, Subtotal in English, Zwischensumme (Netto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "d8674872ebb101aa",
+              "id": "3b97fbce1b2a9bf7",
+              "field_type_id": "3b97fbce1b2a9bf7",
+              "kind": "Inferred Text",
+              "name": "TaxRate",
+              "instructions": "Extract the tax rate (消費税率 in Japanese, State Tax percentage in English, USt.-Satz in German). Include the percentage sign.",
+              "rule_set": null
+            },
+            {
+              "field_id": "9d2bd3a39ddf2e91",
+              "id": "554c4644559b7606",
+              "field_type_id": "554c4644559b7606",
+              "kind": "Monetary Quantity",
+              "name": "TaxAmount",
+              "instructions": "Extract the tax amount (消費税額 in Japanese, Tax Amount in English, USt.-Betrag in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "127cf1bfc313b534",
+              "id": "554c4644559b7606",
+              "field_type_id": "554c4644559b7606",
+              "kind": "Monetary Quantity",
+              "name": "TotalAmount",
+              "instructions": "Extract the total amount (合計(税込) in Japanese, Total (USD) in English, Gesamtbetrag (Brutto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "36ca412453503d23",
+              "id": "3b97fbce1b2a9bf7",
+              "field_type_id": "3b97fbce1b2a9bf7",
+              "kind": "Inferred Text",
+              "name": "LanguageCode",
+              "instructions": "Determine the language of the entire invoice document and return one of the following ISO 639‑1 codes: 'JA'（Japanese）, 'EN'（English）, or 'DE'（German）.",
+              "rule_set": null
+            }
+          ]
+        },
+        {
+          "name": "Invoice > LineItems",
+          "id": "6309b68cf3ee4721",
+          "instructions": "Extract details for each line item on the invoice. Each row in the invoice's item list should be extracted as a separate entry.",
+          "moon_form": [
+            {
+              "field_id": "439c7ffae7762714",
+              "id": "abe3f078d1c16113",
+              "field_type_id": "abe3f078d1c16113",
+              "kind": "Exact Text",
+              "name": "ItemDescription",
+              "instructions": "Extract the description of the item (品目 in Japanese, Description in English, Beschreibung in German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "e7ae3e99b4d84baf",
+              "id": "3b97fbce1b2a9bf7",
+              "field_type_id": "3b97fbce1b2a9bf7",
+              "kind": "Inferred Text",
+              "name": "Quantity",
+              "instructions": "Extract the quantity of the item (数量 in Japanese, Quantity in English, Menge in German).",
+              "rule_set": null
+            },
+            {
+              "field_id": "42e0161a7da77e20",
+              "id": "554c4644559b7606",
+              "field_type_id": "554c4644559b7606",
+              "kind": "Monetary Quantity",
+              "name": "UnitPriceExclTax",
+              "instructions": "Extract the unit price excluding tax (単価(税抜) in Japanese, Unit Price in English, Einzelpreis (Netto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+              "rule_set": null
+            }
+          ]
+        }
+      ],
+      "label_collection_name": null,
+      "trainable": true,
+      "hidden": false,
+      "instructions": "Extract information from invoices in Japanese, English, or German. The format of the invoices may vary."
+    }
+  ],
+  "label_defs": [
+    {
+      "name": "Invoice",
+      "id": "395b8f5acc9b4fdc",
+      "instructions": "Extract general invoice information.",
+      "moon_form": [
+        {
+          "field_id": "5126245b85ce8bef",
+          "id": "abe3f078d1c16113",
+          "field_type_id": "abe3f078d1c16113",
+          "kind": "Exact Text",
+          "name": "InvoiceNumber",
+          "instructions": "Extract the invoice number.",
+          "rule_set": null
+        },
+        {
+          "field_id": "fbf68cccd5ff8e74",
+          "id": "65a05c8b62752ffd",
+          "field_type_id": "65a05c8b62752ffd",
+          "kind": "Date",
+          "name": "InvoiceDate",
+          "instructions": "Extract the date the invoice was issued.",
+          "rule_set": null
+        },
+        {
+          "field_id": "0808ef1f35d3e5b5",
+          "id": "65a05c8b62752ffd",
+          "field_type_id": "65a05c8b62752ffd",
+          "kind": "Date",
+          "name": "DueDate",
+          "instructions": "Extract the payment due date.",
+          "rule_set": null
+        },
+        {
+          "field_id": "49827e5a4c174ba1",
+          "id": "abe3f078d1c16113",
+          "field_type_id": "abe3f078d1c16113",
+          "kind": "Exact Text",
+          "name": "CustomerName",
+          "instructions": "Extract the name of the customer (請求先 in Japanese, Bill To in English, Rechnungsempfaenger in German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "a4b9b6f446d1dc1e",
+          "id": "abe3f078d1c16113",
+          "field_type_id": "abe3f078d1c16113",
+          "kind": "Exact Text",
+          "name": "VendorName",
+          "instructions": "Extract the name of the vendor (取引先 in Japanese, Vendor in English, Lieferant in German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "d823bfc04412d172",
+          "id": "abe3f078d1c16113",
+          "field_type_id": "abe3f078d1c16113",
+          "kind": "Exact Text",
+          "name": "RegistrationNumber",
+          "instructions": "Extract the registration number (登録番号 in Japanese, Vendor EIN in English, USt-IdNr. in German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "a0a926ed52b9f28f",
+          "id": "554c4644559b7606",
+          "field_type_id": "554c4644559b7606",
+          "kind": "Monetary Quantity",
+          "name": "SubtotalExclTax",
+          "instructions": "Extract the subtotal amount excluding tax (小計(税抜) in Japanese, Subtotal in English, Zwischensumme (Netto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "d8674872ebb101aa",
+          "id": "3b97fbce1b2a9bf7",
+          "field_type_id": "3b97fbce1b2a9bf7",
+          "kind": "Inferred Text",
+          "name": "TaxRate",
+          "instructions": "Extract the tax rate (消費税率 in Japanese, State Tax percentage in English, USt.-Satz in German). Include the percentage sign.",
+          "rule_set": null
+        },
+        {
+          "field_id": "9d2bd3a39ddf2e91",
+          "id": "554c4644559b7606",
+          "field_type_id": "554c4644559b7606",
+          "kind": "Monetary Quantity",
+          "name": "TaxAmount",
+          "instructions": "Extract the tax amount (消費税額 in Japanese, Tax Amount in English, USt.-Betrag in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "127cf1bfc313b534",
+          "id": "554c4644559b7606",
+          "field_type_id": "554c4644559b7606",
+          "kind": "Monetary Quantity",
+          "name": "TotalAmount",
+          "instructions": "Extract the total amount (合計(税込) in Japanese, Total (USD) in English, Gesamtbetrag (Brutto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "36ca412453503d23",
+          "id": "3b97fbce1b2a9bf7",
+          "field_type_id": "3b97fbce1b2a9bf7",
+          "kind": "Inferred Text",
+          "name": "LanguageCode",
+          "instructions": "Determine the language of the entire invoice document and return one of the following ISO 639‑1 codes: 'JA'（Japanese）, 'EN'（English）, or 'DE'（German）.",
+          "rule_set": null
+        }
+      ]
+    },
+    {
+      "name": "Invoice > LineItems",
+      "id": "6309b68cf3ee4721",
+      "instructions": "Extract details for each line item on the invoice. Each row in the invoice's item list should be extracted as a separate entry.",
+      "moon_form": [
+        {
+          "field_id": "439c7ffae7762714",
+          "id": "abe3f078d1c16113",
+          "field_type_id": "abe3f078d1c16113",
+          "kind": "Exact Text",
+          "name": "ItemDescription",
+          "instructions": "Extract the description of the item (品目 in Japanese, Description in English, Beschreibung in German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "e7ae3e99b4d84baf",
+          "id": "3b97fbce1b2a9bf7",
+          "field_type_id": "3b97fbce1b2a9bf7",
+          "kind": "Inferred Text",
+          "name": "Quantity",
+          "instructions": "Extract the quantity of the item (数量 in Japanese, Quantity in English, Menge in German).",
+          "rule_set": null
+        },
+        {
+          "field_id": "42e0161a7da77e20",
+          "id": "554c4644559b7606",
+          "field_type_id": "554c4644559b7606",
+          "kind": "Monetary Quantity",
+          "name": "UnitPriceExclTax",
+          "instructions": "Extract the unit price excluding tax (単価(税抜) in Japanese, Unit Price in English, Einzelpreis (Netto) in German). If a currency code is missing, assume the currency based on the document's language (JPY for Japanese, USD for English, EUR for German).",
+          "rule_set": null
+        }
+      ]
+    }
+  ],
+  "_timezone": "UTC",
+  "_label_properties": [],
+  "_preferred_locales": {
+    "default": "en_GB",
+    "preferences": []
+  },
+  "_dataset_flags": [
+    "ixp"
+  ],
+  "_model_config": {
+    "kind": "gpt_ixp",
+    "model_version": "gemini_2_5_flash",
+    "input_config": {
+      "mode": "text_plus_image",
+      "text_config": {
+        "kind": "gemini_table_only"
+      }
+    },
+    "system_prompt_override": null,
+    "frequency_penalty": null,
+    "temperature": null,
+    "top_p": null,
+    "seed": null,
+    "flags": [],
+    "iterative_config": {
+      "max_num_calls": null,
+      "chunk_size": null
+    },
+    "attribution_method": "word_ids"
+  }
+}
