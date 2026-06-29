@@ -42,6 +42,7 @@ This solution automates the entire invoice lifecycle end-to-end:
 | **LLM Extraction API** | Large language model-based field extraction and internal AI validation |
 | **UiPath Integration Service** | Email monitoring trigger via Microsoft 365 Mail connector; detects subject keywords and moves emails to the Invoice folder |
 | **Microsoft 365 Mail (Exchange)** | Email service connected through Integration Service for invoice ingestion |
+| **UiPath AutoPilot** | AI-assisted development used to accelerate workflow, expression, and activity creation across Studio, Maestro, and Apps during build |
 
 
 ---
@@ -115,3 +116,6 @@ This solution uses **Low-Code Agents**.
 6. Check `Invoice Monitor` app for real-time status.
 7. For exception cases, confirm tasks appear in Action Center for human review.
 8. Verify final records are stored in DataFabric.
+
+
+  
