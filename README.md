@@ -20,3 +20,8 @@ Orchestrates AI agents, robots, and humans to automate end-to-end invoice workfl
 - UiPath IXP (Intelligent Document Processing)
 - UiPath Apps (UI layer)
 - Action Center (Human-in-the-loop)
+- UiPath DataFabric (Record management & PDF upload)
+- UiPath Studio / Orchestrator (Dispatcher, Performer, Queue)
+- LLM Extraction API / Internal AI validation
+- Email (IMAP/Exchange)
+  
